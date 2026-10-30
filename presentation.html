@@ -377,7 +377,7 @@ document.getElementById("mac-say").textContent = `${mb.agents[0].slice(0, 5)}: e
   box(g, 20, 20, 440, 170, { stroke: "var(--m3)", width: 3 });
   lines(g, 240, 72, ["Mac · out of CPU", "8 agents → 8 finished", "3 to 15 minutes each"], { size: 26, anchor: "middle" });
   box(g, 540, 20, 440, 170, { stroke: "var(--m1)", width: 3 });
-  lines(g, 760, 72, ["agents-171 · out of memory", "4 agents → 0 finished", `stalled ${days(D.streaks["agents-171"].minutes)} straight`], { size: 26, anchor: "middle" });
+  lines(g, 760, 72, ["agents-171 · out of memory", "4 agents → 3 failed", "the 4th took 4 h 20 min"], { size: 26, anchor: "middle" });
 }
 
 // 8. What one more agent costs.
