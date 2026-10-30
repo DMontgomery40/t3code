@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where should the next agent run?</title>
+<style>
+@font-face { font-family: "Fleet Sketch"; src: url(data:font/woff2;base64,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) format("woff2"); font-display: block; }
+
+body { background: #fffdf8; }
+.deck { max-width: 1000px; margin: 0 auto; padding: 36px 24px 48px;
+  --ink: #1e1e1e; --muted: #5c5c5c; --rule: #e5e5e5; --note: rgba(30, 30, 30, 0.16); --bar: rgba(30, 30, 30, 0.55);
+  --m1: #1971c2; --m2: #f08c00; --m3: #099268; --m4: #6741d9; }
+@media (prefers-color-scheme: dark) {
+  body { background: #121212; }
+  .deck { --ink: #ececec; --muted: #a5a5a5; --rule: #2e2e2e; --note: rgba(236, 236, 236, 0.16); --bar: rgba(236, 236, 236, 0.55);
+    --m1: #228be6; --m2: #e8590c; --m3: #0ca678; --m4: #7950f2; }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+.deck { color: var(--ink); font-family: "Fleet Sketch", "Noteworthy", "Chalkboard SE", "Segoe Print", "Bradley Hand", cursive; }
+.slide { margin: 0 0 56px; }
+.slide h1 { font-size: 44px; line-height: 1.1; margin: 0 0 10px; font-weight: 400; }
+.slide h2 { font-size: 30px; line-height: 1.15; margin: 0 0 6px; font-weight: 400; }
+.say { color: var(--muted); font-size: 18px; margin: 0 0 12px; max-width: 760px; line-height: 1.35; }
+.fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hand { font-family: "Fleet Sketch", "Noteworthy", "Chalkboard SE", "Segoe Print", "Bradley Hand", cursive; }
+.legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 17px; color: var(--muted); margin: 0 0 4px; }
+.legend span::before { content: ""; display: inline-block; width: 18px; height: 4px; border-radius: 2px; background: var(--c); margin-right: 7px; vertical-align: middle; }
+details { margin-top: 8px; font-family: ui-sans-serif, system-ui, sans-serif; }
+summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+table { border-collapse: collapse; font-size: 13px; margin-top: 8px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 4px 14px 4px 0; border-bottom: 1px solid var(--rule); }
+th { color: var(--muted); font-weight: 600; }
+.foot { color: var(--muted); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 12.5px; line-height: 1.5; max-width: 760px; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="slide">
+  <h1>Where should the next agent run?</h1>
+  <p class="say" id="intro"></p>
+  <div class="fig" id="fleet"></div>
+</section>
+
+<section class="slide">
+  <h2>Today, T3 Code asks one question</h2>
+  <p class="say">And it only asks it when a person opens a new thread.</p>
+  <div class="fig" id="today"></div>
+</section>
+
+<section class="slide">
+  <h2>Free memory lies</h2>
+  <div class="fig" id="fooled"></div>
+</section>
+
+<section class="slide">
+  <h2>Picks onto a machine that was already drowning</h2>
+  <p class="say" id="stalled-say"></p>
+  <div class="fig" id="stalled"></div>
+</section>
+
+<section class="slide">
+  <h2>What drowning looks like</h2>
+  <p class="say">Share of every 10 seconds that work spent waiting on memory.</p>
+  <div class="legend" id="psi-legend"></div>
+  <div class="fig" id="psi"></div>
+</section>
+
+<section class="slide">
+  <h2>What happened to the work</h2>
+  <p class="say" id="outcome-say"></p>
+  <div class="fig" id="outcomes"></div>
+</section>
+
+<section class="slide">
+  <h2>Four threads at once</h2>
+  <p class="say" id="burst-say"></p>
+  <div class="fig" id="burst"></div>
+</section>
+
+<section class="slide">
+  <h2>Memory is a cliff. CPU is a slope.</h2>
+  <p class="say" id="mac-say"></p>
+  <div class="fig" id="mac"></div>
+  <div class="fig" id="cliff"></div>
+</section>
+
+<section class="slide">
+  <h2>What one more agent costs</h2>
+  <p class="say">Memory held by all agents on the machine. Dashed: where T3 starts throttling them.</p>
+  <div class="legend" id="cost-legend"></div>
+  <div class="fig" id="cost"></div>
+</section>
+
+<section class="slide">
+  <h2>How v2 picks</h2>
+  <div class="fig" id="how"></div>
+</section>
+
+<section class="slide">
+  <h2>Does the route matter?</h2>
+  <p class="say">One small request, measured from agents-173.</p>
+  <div class="fig" id="routes"></div>
+</section>
+
+<section class="slide">
+  <h2>What the prototype changes</h2>
+  <div class="fig" id="shipped"></div>
+  <details><summary>The numbers behind the charts</summary><table id="numbers"></table></details>
+  <p class="foot" id="foot"></p>
+</section>
+
+</div>
+<script>
+const D = {"window": ["2026-10-29T23:00:00+00:00", "2026-10-30T03:21:00+00:00"], "t": ["23:00", "23:01", "23:02", "23:03", "23:04", "23:05", "23:06", "23:07", "23:08", "23:09", "23:10", "23:11", "23:12", "23:13", "23:14", "23:15", "23:16", "23:17", "23:18", "23:19", "23:20", "23:21", "23:22", "23:23", "23:24", "23:25", "23:26", "23:27", "23:28", "23:29", "23:30", "23:31", "23:32", "23:33", "23:34", "23:35", "23:36", "23:37", "23:38", "23:39", "23:40", "23:41", "23:42", "23:43", "23:44", "23:45", "23:46", "23:47", "23:48", "23:49", "23:50", "23:51", "23:52", "23:53", "23:54", "23:55", "23:56", "23:57", "23:58", "23:59", "00:00", "00:01", "00:02", "00:03", "00:04", "00:05", "00:06", "00:07", "00:08", "00:09", "00:10", "00:11", "00:12", "00:13", "00:14", "00:15", "00:16", "00:17", "00:18", "00:19", "00:20", "00:21", "00:22", "00:23", "00:24", "00:25", "00:26", "00:27", "00:28", "00:29", "00:30", "00:31", "00:32", "00:33", "00:34", "00:35", "00:36", "00:37", "00:38", "00:39", "00:40", "00:41", "00:42", "00:43", "00:44", "00:45", "00:46", "00:47", "00:48", "00:49", "00:50", "00:51", "00:52", "00:53", "00:54", "00:55", "00:56", "00:57", "00:58", "00:59", "01:00", "01:01", "01:02", "01:03", "01:04", "01:05", "01:06", "01:07", "01:08", "01:09", "01:10", "01:11", "01:12", "01:13", "01:14", "01:15", "01:16", "01:17", "01:18", "01:19", "01:20", "01:21", "01:22", "01:23", "01:24", "01:25", "01:26", "01:27", "01:28", "01:29", "01:30", "01:31", "01:32", "01:33", "01:34", "01:35", "01:36", "01:37", "01:38", "01:39", "01:40", "01:41", "01:42", "01:43", "01:44", "01:45", "01:46", "01:47", "01:48", "01:49", "01:50", "01:51", "01:52", "01:53", "01:54", "01:55", "01:56", "01:57", "01:58", "01:59", "02:00", "02:01", "02:02", "02:03", "02:04", "02:05", "02:06", "02:07", "02:08", "02:09", "02:10", "02:11", "02:12", "02:13", "02:14", "02:15", "02:16", "02:17", "02:18", "02:19", "02:20", "02:21", "02:22", "02:23", "02:24", "02:25", "02:26", "02:27", "02:28", "02:29", "02:30", "02:31", "02:32", "02:33", "02:34", "02:35", "02:36", "02:37", "02:38", "02:39", "02:40", "02:41", "02:42", "02:43", "02:44", "02:45", "02:46", "02:47", "02:48", "02:49", "02:50", "02:51", "02:52", "02:53", "02:54", "02:55", "02:56", "02:57", "02:58", "02:59", "03:00", "03:01", "03:02", "03:03", "03:04", "03:05", "03:06", "03:07", "03:08", "03:09", "03:10", "03:11"], "psi": {"agents-171": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 96, 98, 99, 99, 99, 99, 98, 97, 96, 97, 96, 12, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 94, 98, 34, 0, 0, 0, 0, 0, 96, 90, 96, 95, 98, 96, 96, 97, 99, 97, 98, 98, 98, 98, 97, 98, 98, 97, 99, 98, 97, 97, 99, 98, 98, 97, 98, 99, 98, 98, 99, 97, 97, 98, 98, 99, 99, 99, 99, 98, 99, 98, 3, 98, 96, 99, 99, 98, 99, 99, 99, 99, 99, 99, 99, 99, 99, 98, 97, 99, 100, 99, 99, 99, 99, 99, 100, 99, 100, 100, 99, 99, 99, 99, 99, 100, 100, 99, 98, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 100, 100, 100, 100, 99, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 99, 99, 100, 99, 99, 99, 100, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 100, 99, 100, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 100, 99, 100, 99, 99, 99, 99, 99, 100, 100, 99, 99, 99, 99, 98, 98, 99, 99, 98, 99, 99, 98, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99], "agents-173": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "agents-136": [0, 31, 63, 62, 93, 98, 72, 99, 99, 100, 99, 99, 100, 99, 99, 100, 100, 99, 99, 99, 99, 98, 98, 99, 99, 99, 99, 98, 99, 99, 100, 99, 99, 99, 99, 100, 99, 99, 99, 99, 99, 100, 99, 99, 99, 98, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 100, 99, 100, 99, 99, 99, 99, 98, 99, 99, 99, 99, 99, 99, 100, 100, 99, 100, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 100, 99, 99, 99, 99, 98, 99, 99, 99, 100, 100, 100, 98, 98, 98, 99, 99, 99, 99, 99, 97, 99, 98, 99, 99, 100, 100, 99, 99, 99, 99, 99, 99, 99, 99, 100, 99, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "working": {"agents-171": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 3, 3, 3, 3, 3, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], "agents-173": [1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 3, 4, 4, 3, 3, 4, 3, 2, 2, 3, 3, 2, 2, 5, 4, 4, 4, 6, 3, 2, 2, 3, 1, 1, 1, 1, 3, 4, 4, 4, 3, 2, 2, 4, 5, 4, 4, 4, 5, 4, 4, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mac mini": [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 4, 4, 4, 3, 3, 3, 2, 2, 1, 0, 2, 2, 2, 2, 2, 5, 5, 4, 3, 3, 3, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 4, 4, 3, 4, 2, 1, 1, 1, 1, 5, 5, 2, 2, 1, 1, 1, 3, 4, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 3, 3, 2, 2, 1, 0, 0, 2, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 8, 8, 7, 7, 7, 6, 6, 6, 6, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "agents-136": [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]}, "summary": {"Theo (stock)": {"decisions": 252, "refused": 0, "ontoStalledMachine": 5, "stalledWithin10": 42, "share": {"agents-171": 17, "agents-173": 234, "Mac mini": 1, "agents-136": 0}}, "Scrypted-style count": {"decisions": 252, "refused": 0, "ontoStalledMachine": 10, "stalledWithin10": 32, "share": {"agents-171": 47, "agents-173": 129, "Mac mini": 75, "agents-136": 1}}, "My first version": {"decisions": 252, "refused": 0, "ontoStalledMachine": 19, "stalledWithin10": 46, "share": {"agents-171": 59, "agents-173": 166, "Mac mini": 27, "agents-136": 0}}, "v2 (pressure-aware)": {"decisions": 252, "refused": 2, "ontoStalledMachine": 0, "stalledWithin10": 3, "share": {"agents-171": 0, "agents-173": 75, "Mac mini": 175, "agents-136": 0}}}, "stalledMinutes": {"agents-171": {"stalled": 205, "total": 252}, "agents-173": {"stalled": 1, "total": 252}, "Mac mini": {"stalled": 0, "total": 252}, "agents-136": {"stalled": 129, "total": 252}}, "calibration": {"agents-171": [{"working": 1, "sliceGb": 2.11, "minutes": 1}, {"working": 2, "sliceGb": 3.83, "minutes": 9}, {"working": 3, "sliceGb": 4.27, "minutes": 44}, {"working": 4, "sliceGb": 4.61, "minutes": 163}], "agents-173": [{"working": 1, "sliceGb": 3.17, "minutes": 65}, {"working": 2, "sliceGb": 5.95, "minutes": 24}, {"working": 3, "sliceGb": 6.94, "minutes": 14}, {"working": 4, "sliceGb": 8.28, "minutes": 25}, {"working": 5, "sliceGb": 8.16, "minutes": 6}, {"working": 6, "sliceGb": 8.8, "minutes": 1}]}, "sliceHighGb": {"agents-171": 3.87, "agents-173": 9.61}, "routes": [{"route": "LAN, direct", "ms": 1, "range": "1\u20132"}, {"route": "LAN via SSH tunnel", "ms": 3, "range": "2\u20133"}, {"route": "Mac over SSH tunnel", "ms": 10, "range": "9\u2013117"}, {"route": "T3 Connect tunnel", "ms": 151, "range": "49\u2013258"}], "macMemory": [{"measure": "Activity Monitor style", "gb": 10.7}, {"measure": "T3 today (vm_stat formula)", "gb": 15.5}, {"measure": "macOS kernel estimate", "gb": 30.5}], "fleetRuns": 65, "minutes": 252, "streaks": {"agents-171": {"minutes": 145, "end": "03:11"}, "agents-173": {"minutes": 1, "end": "23:58"}, "Mac mini": {"minutes": 0, "end": null}, "agents-136": {"minutes": 129, "end": "01:09"}}, "macBurst": {"t": ["01:15:08", "01:15:18", "01:15:28", "01:15:38", "01:15:48", "01:15:58", "01:16:09", "01:16:19", "01:16:29", "01:16:39", "01:16:49", "01:16:59", "01:17:09", "01:17:19", "01:17:29", "01:17:39", "01:17:49", "01:17:59", "01:18:10", "01:18:20", "01:18:30", "01:18:40", "01:18:50", "01:19:00", "01:19:10", "01:19:20", "01:19:30", "01:19:40", "01:19:50", "01:20:00", "01:20:11", "01:20:21", "01:20:31", "01:20:41", "01:20:51", "01:21:01", "01:21:11", "01:21:21", "01:21:31", "01:21:41", "01:21:51", "01:22:01", "01:22:11", "01:22:22", "01:22:32", "01:22:42", "01:22:52", "01:23:02", "01:23:12", "01:23:22", "01:23:32", "01:23:42", "01:23:52", "01:24:02", "01:24:13", "01:24:23", "01:24:33", "01:24:43", "01:24:53", "01:25:03", "01:25:13", "01:25:23", "01:25:33", "01:25:43", "01:25:53", "01:26:03", "01:26:13", "01:26:24", "01:26:34", "01:26:44", "01:26:54", "01:27:04", "01:27:14", "01:27:24", "01:27:34", "01:27:44", "01:27:55", "01:28:05", "01:28:15", "01:28:25", "01:28:35", "01:28:46", "01:28:56", "01:29:07", "01:29:17", "01:29:27", "01:29:37", "01:29:47", "01:29:57", "01:30:07", "01:30:17", "01:30:29", "01:30:39", "01:30:49", "01:31:02", "01:31:13", "01:31:23", "01:31:33", "01:31:46", "01:31:59", "01:32:09", "01:32:19", "01:32:29", "01:32:39", "01:32:53", "01:33:03", "01:33:13", "01:33:24", "01:33:34", "01:33:44", "01:33:54", "01:34:04", "01:34:15", "01:34:25", "01:34:35", "01:34:45", "01:34:55", "01:35:05", "01:35:15", "01:35:26", "01:35:36", "01:35:46", "01:35:56", "01:36:06", "01:36:16", "01:36:27", "01:36:37", "01:36:47", "01:36:57", "01:37:07", "01:37:17", "01:37:27", "01:37:37", "01:37:47", "01:37:58", "01:38:08", "01:38:18", "01:38:28", "01:38:38", "01:38:48", "01:38:58", "01:39:08", "01:39:18", "01:39:28", "01:39:38", "01:39:48", "01:39:59", "01:40:09", "01:40:19", "01:40:29", "01:40:39", "01:40:49", "01:40:59", "01:41:09", "01:41:19", "01:41:29", "01:41:39", "01:41:49", "01:42:00", "01:42:10", "01:42:20", "01:42:30", "01:42:40", "01:42:50", "01:43:00", "01:43:10", "01:43:20", "01:43:30", "01:43:40", "01:43:50", "01:44:01", "01:44:11", "01:44:21", "01:44:31", "01:44:41", "01:44:51", "01:45:01", "01:45:11", "01:45:21", "01:45:31", "01:45:41", "01:45:51", "01:46:02", "01:46:12", "01:46:22", "01:46:32", "01:46:42", "01:46:52", "01:47:02", "01:47:12", "01:47:22", "01:47:32", "01:47:42", "01:47:52", "01:48:03", "01:48:13", "01:48:23", "01:48:33", "01:48:43", "01:48:53", "01:49:03", "01:49:13", "01:49:23", "01:49:33", "01:49:43", "01:49:54", "01:50:04", "01:50:14", "01:50:24", "01:50:34", "01:50:44", "01:50:54", "01:51:10", "01:51:20", "01:51:30", "01:51:41", "01:51:51", "01:52:03", "01:52:13", "01:52:23", "01:52:33", "01:52:43", "01:52:53", "01:53:03", "01:53:13", "01:53:23", "01:53:33", "01:53:43", "01:53:54", "01:54:04", "01:54:14", "01:54:24", "01:54:34", "01:54:44", "01:54:54", "01:55:04", "01:55:14", "01:55:24", "01:55:34", "01:55:44", "01:55:55", "01:56:05", "01:56:15", "01:56:25", "01:56:35", "01:56:45", "01:56:55", "01:57:05", "01:57:15", "01:57:25", "01:57:35", "01:57:45", "01:57:56", "01:58:06", "01:58:16", "01:58:26", "01:58:36", "01:58:46", "01:58:56", "01:59:06", "01:59:16", "01:59:26", "01:59:36", "01:59:46", "01:59:56"], "load": [6.39, 5.94, 5.65, 5.71, 5.6, 5.96, 5.75, 6.26, 6.36, 7.69, 7.51, 7.05, 7.35, 7.72, 7.4, 7.35, 6.84, 7.48, 7.31, 7.75, 7.39, 7.48, 8.19, 8.33, 8.21, 8.05, 7.75, 7.64, 7.75, 8.79, 8.91, 8.94, 8.81, 8.82, 7.87, 7.33, 7.76, 7.1, 8.95, 8.82, 8.47, 8.34, 8.33, 8.48, 9.49, 9.61, 9.25, 9.7, 8.75, 8.4, 8.88, 8.11, 8.35, 8.06, 8.07, 7.52, 9.16, 8.87, 8.2, 8.49, 7.72, 7.15, 6.76, 6.67, 6.92, 7.44, 7.38, 7.25, 7.54, 7.14, 7.13, 6.93, 7.72, 12.1, 24.57, 38.09, 43.35, 51.89, 59.43, 66.96, 77.72, 86.57, 105.95, 118.62, 139.63, 139.71, 137.01, 129.48, 118.65, 109.71, 105.71, 100.97, 96.02, 87.97, 72.06, 69.72, 60.57, 55.0, 59.38, 56.31, 60.77, 56.97, 62.56, 67.03, 63.28, 66.12, 65.36, 62.13, 59.65, 53.63, 48.53, 48.49, 45.28, 42.65, 42.16, 43.8, 41.27, 40.34, 38.86, 42.26, 40.51, 40.41, 36.7, 37.7, 33.01, 29.44, 27.26, 24.85, 22.36, 28.05, 37.05, 39.65, 37.01, 33.82, 32.21, 29.16, 26.37, 25.22, 22.65, 25.89, 26.02, 27.08, 30.26, 30.71, 33.47, 30.19, 32.25, 33.63, 32.5, 29.74, 27.12, 24.74, 24.52, 25.13, 25.2, 24.92, 23.63, 23.06, 21.95, 20.55, 18.7, 18.4, 22.56, 20.71, 19.45, 18.4, 17.11, 16.9, 17.68, 16.57, 15.74, 14.69, 14.04, 13.66, 13.23, 12.04, 12.1, 13.79, 12.52, 12.88, 12.3, 11.56, 14.1, 13.09, 12.17, 12.65, 12.88, 18.14, 20.02, 21.52, 20.24, 22.42, 25.37, 25.07, 24.16, 21.82, 20.4, 19.17, 19.46, 23.59, 29.32, 32.48, 33.77, 36.27, 37.8, 40.49, 41.59, 38.85, 36.08, 32.74, 33.01, 33.3, 36.07, 40.03, 41.81, 45.98, 49.06, 48.94, 50.78, 49.58, 50.01, 46.31, 41.69, 41.68, 37.84, 33.1, 31.11, 27.63, 25.16, 24.01, 21.86, 20.97, 19.06, 17.73, 18.2, 18.43, 17.28, 16.38, 15.97, 15.7, 14.15, 14.74, 14.23, 12.96, 12.47, 11.57, 10.62, 9.77, 10.17, 9.67, 10.24, 9.52, 8.95, 8.99, 8.31, 8.25, 7.6, 7.72, 7.39, 9.01, 8.49, 8.56, 8.15, 8.3, 7.87], "level": [1], "freePct": [63, 54], "compressedGb": [11.4, 15.0], "cores": 12, "agents": ["01:26:48", "01:41:46"]}, "burst": {"Theo (stock)": {"burst": 4, "bursts": 252, "placed": 1008, "refused": 0, "allOnOneMachine": 252, "ontoStalled": 20, "overMeasuredCapacity": 161}, "v2 as first written": {"burst": 4, "bursts": 252, "placed": 1004, "refused": 4, "allOnOneMachine": 105, "ontoStalled": 0, "overMeasuredCapacity": 14}, "v2 now: each working agent charged 1.75 GB": {"burst": 4, "bursts": 252, "placed": 992, "refused": 16, "allOnOneMachine": 89, "ontoStalled": 0, "overMeasuredCapacity": 0}}, "outcomes": [{"machine": "Mac mini", "finished": 15, "partly": 12, "never finished": 0, "no report": 1, "total": 28}, {"machine": "agents-173", "finished": 9, "partly": 4, "never finished": 0, "no report": 0, "total": 13}, {"machine": "agents-171", "finished": 5, "partly": 1, "never finished": 4, "no report": 0, "total": 10}, {"machine": "agents-136", "finished": 0, "partly": 0, "never finished": 2, "no report": 0, "total": 2}]};
+const NS = "http://www.w3.org/2000/svg";
+const MACHINES = ["agents-171", "agents-173", "Mac mini", "agents-136"];
+const COLOR = { "agents-171": "var(--m1)", "agents-173": "var(--m2)", "Mac mini": "var(--m3)", "agents-136": "var(--m4)" };
+const SPEC = {
+  "agents-171": ["8 cores · 7.9 GB", "Proxmox VM"],
+  "agents-173": ["10 cores · 16 GB", "Proxmox VM"],
+  "Mac mini": ["12 cores · 48 GB", "desktop, in use"],
+  "agents-136": ["6 cores · 7.9 GB", "Proxmox VM"],
+};
+
+// Seeded, so every render draws the same wobble.
+let seed = 20261030;
+function rand() {
+  seed = (seed + 0x6d2b79f5) | 0;
+  let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+}
+const jit = (a) => (rand() - 0.5) * 2 * a;
+const add = (parent, tag, attrs = {}) => {
+  const node = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+  parent.appendChild(node);
+  return node;
+};
+const canvas = (id, w, h, label) => add(document.getElementById(id), "svg", { viewBox: `0 0 ${w} ${h}`, role: "img", "aria-label": label });
+function line(g, x1, y1, x2, y2, { stroke = "var(--ink)", width = 2.4, passes = 2, rough = 1, dash } = {}) {
+  const len = Math.hypot(x2 - x1, y2 - y1);
+  const o = Math.min(3, 0.6 + len * 0.004) * rough;
+  for (let p = 0; p < passes; p++) {
+    const mx = (x1 + x2) / 2 + jit(o * 1.4), my = (y1 + y2) / 2 + jit(o * 1.4);
+    add(g, "path", {
+      d: `M${x1 + jit(o)},${y1 + jit(o)} Q${mx},${my} ${x2 + jit(o)},${y2 + jit(o)}`,
+      stroke, "stroke-width": Math.max(1, width - p * 0.7), fill: "none", "stroke-linecap": "round",
+      ...(dash ? { "stroke-dasharray": dash } : {}), ...(p ? { opacity: 0.7 } : {}),
+    });
+  }
+}
+let clips = 0;
+function hachure(g, x, y, w, h, color, gap = 9) {
+  const id = `clip${clips++}`;
+  add(add(g, "clipPath", { id }), "rect", { x, y, width: w, height: h });
+  const inner = add(g, "g", { "clip-path": `url(#${id})` });
+  for (let k = -h; k < w; k += gap) line(inner, x + k, y + h + 3, x + k + h, y - 3, { stroke: color, width: 1.7, passes: 1, rough: 0.5 });
+}
+function box(g, x, y, w, h, { stroke = "var(--ink)", fill, width = 2.4, gap } = {}) {
+  if (fill) hachure(g, x, y, w, h, fill, gap);
+  line(g, x, y, x + w, y, { stroke, width });
+  line(g, x + w, y, x + w, y + h, { stroke, width });
+  line(g, x + w, y + h, x, y + h, { stroke, width });
+  line(g, x, y + h, x, y, { stroke, width });
+}
+function poly(g, pts, { stroke = "var(--ink)", width = 2.6 } = {}) {
+  for (let p = 0; p < 2; p++) {
+    add(g, "path", {
+      d: pts.map(([x, y], i) => `${i ? "L" : "M"}${x + jit(0.7)},${y + jit(0.7)}`).join(""),
+      stroke, "stroke-width": width - p * 0.9, fill: "none", "stroke-linejoin": "round", "stroke-linecap": "round", ...(p ? { opacity: 0.6 } : {}),
+    });
+  }
+}
+function ring(g, cx, cy, rx, ry, { stroke = "var(--ink)", width = 2.6 } = {}) {
+  for (let p = 0; p < 2; p++) {
+    const start = rand() * Math.PI * 2, pts = [];
+    for (let a = 0; a <= Math.PI * 2 + 0.5; a += 0.25) {
+      const r = 1 + jit(0.06);
+      pts.push(`${cx + Math.cos(start + a) * rx * r},${cy + Math.sin(start + a) * ry * r}`);
+    }
+    add(g, "path", { d: `M${pts.join("L")}`, stroke, "stroke-width": width - p * 0.9, fill: "none", "stroke-linecap": "round", "stroke-linejoin": "round" });
+  }
+}
+function arrow(g, x1, y1, x2, y2, opts = {}) {
+  line(g, x1, y1, x2, y2, opts);
+  const a = Math.atan2(y2 - y1, x2 - x1);
+  for (const d of [0.45, -0.45]) line(g, x2, y2, x2 - 17 * Math.cos(a - d), y2 - 17 * Math.sin(a - d), { ...opts, passes: 1 });
+}
+function say(g, x, y, value, { size = 26, anchor = "start", fill = "var(--ink)" } = {}) {
+  const node = add(g, "text", { x, y, "font-size": size, "text-anchor": anchor, fill, class: "hand" });
+  node.textContent = value;
+  return node;
+}
+function lines(g, x, y, rows, opts = {}) {
+  rows.forEach((row, i) => say(g, x, y + i * ((opts.size ?? 26) * 1.25), row, opts));
+}
+const tip = (node, value) => { add(node, "title").textContent = value; };
+function legend(id, labels) {
+  document.getElementById(id).innerHTML = labels.map((l) => `<span style="--c:${COLOR[l]}">${l}</span>`).join("");
+}
+function bars(id, rows, { label, max, unit = "", circle } = {}) {
+  const W = 1000, rowH = 74, L = 330, R = 120, T = 10;
+  const g = canvas(id, W, T + rows.length * rowH + 10, label);
+  const top = max ?? Math.max(...rows.map((r) => r.value));
+  rows.forEach((row, k) => {
+    const y = T + k * rowH, w = Math.max(row.value > 0 ? 6 : 0, (row.value / top) * (W - L - R));
+    say(g, L - 18, y + rowH / 2 + 9, row.label, { size: 27, anchor: "end" });
+    if (w > 0) box(g, L, y + 14, w, rowH - 28, { fill: "var(--bar)", stroke: "var(--ink)" });
+    else line(g, L, y + 14, L, y + rowH - 14);
+    const value = say(g, L + w + 18, y + rowH / 2 + 12, `${row.value}${unit}`, { size: 36 });
+    if (circle === k) ring(g, L + w + 18 + 11 + `${row.value}${unit}`.length * 9, y + rowH / 2, 34 + `${row.value}${unit}`.length * 8, 28);
+    tip(add(g, "rect", { x: 0, y, width: W, height: rowH, fill: "transparent" }), row.detail ?? `${row.label}: ${row.value}${unit}`);
+  });
+}
+
+// 1. The fleet.
+const days = (m) => `${Math.floor(m / 60)} h ${m % 60} min`;
+document.getElementById("intro").textContent =
+  `T3 Code's load balancer vs. four real machines: ${days(D.minutes + 10)} of real work, ${D.fleetRuns} tasks on real repos, Claude, Codex and Muse agents, sampled every 10 seconds.`;
+{
+  const g = canvas("fleet", 1000, 330, "The four machines in the test");
+  box(g, 400, 8, 200, 62, { width: 2.6 });
+  say(g, 500, 50, "new thread", { size: 28, anchor: "middle" });
+  MACHINES.forEach((m, i) => {
+    const x = 14 + i * 247, y = 150;
+    arrow(g, 500, 74, x + 108, y - 10, { width: 2, stroke: "var(--muted)" });
+    box(g, x, y, 220, 150, { stroke: COLOR[m], width: 3.2 });
+    say(g, x + 110, y + 48, m, { size: 30, anchor: "middle" });
+    say(g, x + 110, y + 90, SPEC[m][0], { size: 22, anchor: "middle" });
+    say(g, x + 110, y + 124, SPEC[m][1], { size: 20, anchor: "middle", fill: "var(--muted)" });
+  });
+  say(g, 690, 112, "?", { size: 44, fill: "var(--muted)" });
+}
+
+// 2. Today's formula and its blind spots.
+{
+  const g = canvas("today", 1000, 360, "Today's scoring formula and what it misses");
+  box(g, 150, 10, 700, 90, { width: 3 });
+  say(g, 500, 68, "free cores × free memory %", { size: 40, anchor: "middle" });
+  const notes = [
+    ["one score per server,", "not per machine"],
+    ["delegates, workflows,", "schedules: never asked"],
+    ["Theo keeps it Off", "(his video, 12:08)"],
+  ];
+  notes.forEach((rows, i) => {
+    const x = 20 + i * 330, y = 180;
+    arrow(g, 500, 104, x + 150, y - 8, { width: 1.8, stroke: "var(--muted)" });
+    box(g, x, y, 300, 130, { fill: "var(--note)", gap: 7, width: 2 });
+    lines(g, x + 150, y + 56, rows, { size: 25, anchor: "middle" });
+  });
+}
+
+// 3. Free memory lies.
+{
+  const g = canvas("fooled", 1000, 280, "29 percent memory free while 98.7 percent of time was stalled");
+  say(g, 190, 150, "29%", { size: 130, anchor: "middle" });
+  say(g, 190, 215, "of memory free", { size: 28, anchor: "middle", fill: "var(--muted)" });
+  arrow(g, 360, 110, 560, 110, { width: 3 });
+  say(g, 460, 88, "same second", { size: 22, anchor: "middle", fill: "var(--muted)" });
+  say(g, 790, 150, "98.7%", { size: 130, anchor: "middle" });
+  say(g, 790, 215, "of time stalled on memory", { size: 28, anchor: "middle", fill: "var(--muted)" });
+  ring(g, 790, 100, 205, 80);
+  say(g, 500, 268, "agents-136. T3 today reads the left number.", { size: 24, anchor: "middle", fill: "var(--muted)" });
+}
+
+// 4. Picks onto drowning machines.
+const policyName = { "Theo (stock)": "T3 today", "Scrypted-style count": "Scrypted-style count", "My first version": "my first try", "v2 (pressure-aware)": "v2" };
+document.getElementById("stalled-say").textContent = `Every minute of the run, each policy picks a machine for a new thread from what it could see then (${D.summary["v2 (pressure-aware)"].decisions} picks each).`;
+bars("stalled", Object.entries(D.summary).map(([name, s]) => ({ label: policyName[name], value: s.ontoStalledMachine, detail: `${policyName[name]}: ${s.ontoStalledMachine} of ${s.decisions} picks onto a stalled machine` })), { label: "Picks onto an already stalled machine per policy", circle: 3 });
+
+// 5. The stall timeline.
+legend("psi-legend", ["agents-171", "agents-173", "agents-136"]);
+{
+  const W = 1000, H = 360, L = 70, R = 140, T = 20, B = 44;
+  const g = canvas("psi", W, H, "Memory stall over time per Linux machine");
+  const n = D.t.length, x = (i) => L + (i / (n - 1)) * (W - L - R), y = (v) => T + (1 - v / 100) * (H - T - B);
+  line(g, L, y(0), W - R, y(0), { width: 2 });
+  line(g, L, y(0), L, y(100), { width: 2 });
+  for (const v of [0, 50, 100]) say(g, L - 12, y(v) + 8, `${v}%`, { size: 20, anchor: "end", fill: "var(--muted)" });
+  D.t.forEach((t, i) => { if (t.endsWith(":00")) say(g, x(i), H - 10, t, { size: 20, anchor: "middle", fill: "var(--muted)" }); });
+  const ends = [];
+  for (const m of ["agents-171", "agents-173", "agents-136"]) {
+    const pts = D.psi[m].map((v, i) => [i, v]).filter(([i]) => i % 2 === 0 || i === n - 1).map(([i, v]) => [x(i), y(v ?? 0)]);
+    poly(g, pts, { stroke: COLOR[m] });
+    ends.push({ m, y: pts[pts.length - 1][1] });
+  }
+  ends.sort((a, b) => a.y - b.y);
+  for (let k = 1; k < ends.length; k++) ends[k].y = Math.max(ends[k].y, ends[k - 1].y + 26);
+  for (const e of ends) say(g, W - R + 12, e.y + 8, e.m, { size: 22 });
+  const recovered = D.t.indexOf("01:09");
+  arrow(g, x(recovered) + 120, y(35), x(recovered) + 6, y(4), { width: 2 });
+  lines(g, x(recovered) + 126, y(38), ["136: leaked workers killed,", "back in 20 seconds"], { size: 21 });
+  const late = D.t.indexOf("02:20");
+  arrow(g, x(late), y(80), x(late), y(97), { width: 2 });
+  lines(g, x(late) - 170, y(72), ["171: 4 agents, none finished"], { size: 21 });
+  for (let i = 0; i < n; i += 3) {
+    tip(add(g, "rect", { x: x(i) - 4, y: T, width: 8, height: H - T - B, fill: "transparent" }),
+      `${D.t[i]} UTC — ${["agents-171", "agents-173", "agents-136"].map((m) => `${m}: ${Math.round(D.psi[m][i] ?? 0)}%`).join(", ")}`);
+  }
+}
+
+// 5b. What happened to the work.
+{
+  const rows = D.outcomes;
+  const small = rows.filter((r) => r.machine === "agents-171" || r.machine === "agents-136");
+  const big = rows.filter((r) => !small.includes(r));
+  const sum = (list, key) => list.reduce((n, r) => n + r[key], 0);
+  document.getElementById("outcome-say").textContent =
+    `${sum(rows, "total")} real tasks from the overnight run: reviews, fixes and health passes. ` +
+    `Every one that never finished ran on a 7.9 GB VM: ${sum(small, "never finished")} of ${sum(small, "total")} there, ` +
+    `${sum(big, "never finished")} of ${sum(big, "total")} on agents-173 and the Mac.`;
+  const W = 1000, rowH = 92, L = 250, R = 30, T = 6;
+  const g = canvas("outcomes", W, T + rows.length * rowH + 64, "Task outcomes by machine");
+  const unit = (W - L - R) / Math.max(...rows.map((r) => r.total));
+  rows.forEach((row, k) => {
+    const y = T + k * rowH, top = y + 8, h = rowH - 44;
+    line(g, 12, y + 14, 12, y + 50, { stroke: COLOR[row.machine], width: 7, passes: 1 });
+    say(g, 30, y + 42, row.machine, { size: 27 });
+    const parts = [["finished", "done"], ["partly", "partly"], ["never finished", "never finished"], ["no report", "no report"]].filter(([key]) => row[key] > 0);
+    say(g, L, y + 80, parts.map(([key, word]) => `${row[key]} ${word}`).join(" · "), { size: 19, fill: "var(--muted)" });
+    let x = L;
+    for (const [key] of parts) {
+      const w = row[key] * unit;
+      if (key === "finished") box(g, x, top, w, h, { fill: "var(--bar)", gap: 6 });
+      else if (key === "partly") box(g, x, top, w, h, { fill: "var(--bar)", gap: 16 });
+      else if (key === "never finished") {
+        box(g, x, top, w, h, { width: 3 });
+        line(g, x + 4, top + 4, x + w - 4, top + h - 4, { width: 3 });
+        line(g, x + 4, top + h - 4, x + w - 4, top + 4, { width: 3 });
+      } else box(g, x, top, w, h, { stroke: "var(--muted)" });
+      tip(add(g, "rect", { x, y: top, width: w, height: h, fill: "transparent" }), `${row.machine}: ${row[key]} ${key}`);
+      x += w;
+    }
+  });
+  const ly = T + rows.length * rowH + 22;
+  box(g, L, ly, 40, 26, { fill: "var(--bar)", gap: 6, width: 2 }); say(g, L + 52, ly + 21, "done", { size: 21 });
+  box(g, L + 150, ly, 40, 26, { fill: "var(--bar)", gap: 16, width: 2 }); say(g, L + 202, ly + 21, "partly", { size: 21 });
+  box(g, L + 310, ly, 40, 26, { width: 2 }); line(g, L + 312, ly + 2, L + 348, ly + 24, { width: 2 }); line(g, L + 312, ly + 24, L + 348, ly + 2, { width: 2 });
+  say(g, L + 362, ly + 21, "never started, failed or stuck", { size: 21 });
+}
+
+// 6. Bursts.
+const burstName = { "Theo (stock)": "T3 today", "v2 as first written": "v2, as measured", "v2 now: each working agent charged 1.75 GB": "v2, charged up front" };
+const firstBurst = Object.values(D.burst)[0];
+document.getElementById("burst-say").textContent = `Delegates, workflows and Cmd+Enter start several threads in seconds. Here, ${firstBurst.bursts} bursts of four: how many threads landed past what that machine can hold?`;
+bars("burst", Object.entries(D.burst).map(([name, b]) => ({ label: burstName[name], value: b.overMeasuredCapacity, detail: `${burstName[name]}: ${b.overMeasuredCapacity} of ${b.placed} threads past capacity; all four on one machine in ${b.allOnOneMachine} of ${b.bursts} bursts` })), { label: "Threads placed past a machine's measured capacity", circle: 2 });
+
+// 7. The Mac: CPU-bound but fine.
+const mb = D.macBurst;
+document.getElementById("mac-say").textContent = `${mb.agents[0].slice(0, 5)}: eight real tasks start on the Mac within 30 seconds. Memory pressure: "normal" the whole time.`;
+{
+  const W = 1000, H = 330, L = 70, R = 140, T = 40, B = 44;
+  const g = canvas("mac", W, H, "Mac load average while eight agents ran");
+  const n = mb.t.length, max = 150, x = (i) => L + (i / (n - 1)) * (W - L - R), y = (v) => T + (1 - v / max) * (H - T - B);
+  const at = (hhmmss) => Math.max(0, mb.t.findIndex((t) => t >= hhmmss));
+  hachure(g, x(at(mb.agents[0])), T, x(at(mb.agents[1])) - x(at(mb.agents[0])), H - T - B, "var(--note)", 12);
+  say(g, x(at(mb.agents[0])) + 10, T - 12, "8 agents working", { size: 22 });
+  line(g, L, y(0), W - R, y(0), { width: 2 });
+  line(g, L, y(0), L, y(max), { width: 2 });
+  for (const v of [0, 50, 100, 150]) say(g, L - 12, y(v) + 8, `${v}`, { size: 20, anchor: "end", fill: "var(--muted)" });
+  mb.t.forEach((t, i) => { if (/^0[12]:(00|15|30|45):0\d$/.test(t) && (i === 0 || mb.t[i - 1].slice(0, 5) !== t.slice(0, 5))) say(g, x(i), H - 10, t.slice(0, 5), { size: 20, anchor: "middle", fill: "var(--muted)" }); });
+  line(g, L, y(mb.cores), W - R, y(mb.cores), { width: 2, dash: "8 8", passes: 1 });
+  say(g, L + 8, y(mb.cores) - 8, `${mb.cores} cores`, { size: 22 });
+  poly(g, mb.load.filter((_, i) => i % 2 === 0).map((v, k) => [x(k * 2), y(v)]), { stroke: "var(--m3)" });
+  const peak = mb.load.indexOf(Math.max(...mb.load));
+  say(g, x(peak) + 22, y(mb.load[peak]) + 10, `load ${Math.round(mb.load[peak])}`, { size: 26 });
+  say(g, W - R + 12, y(mb.load[n - 1]) - 14, "Mac load", { size: 22 });
+  for (let i = 0; i < n; i += 3) tip(add(g, "rect", { x: x(i) - 4, y: T, width: 8, height: H - T - B, fill: "transparent" }), `${mb.t[i]} UTC — load ${mb.load[i].toFixed(1)} on ${mb.cores} cores`);
+}
+{
+  const g = canvas("cliff", 1000, 210, "CPU-bound Mac versus memory-bound VM");
+  box(g, 20, 20, 440, 170, { stroke: "var(--m3)", width: 3 });
+  lines(g, 240, 72, ["Mac · out of CPU", "8 agents → 8 finished", "3 to 15 minutes each"], { size: 26, anchor: "middle" });
+  box(g, 540, 20, 440, 170, { stroke: "var(--m1)", width: 3 });
+  lines(g, 760, 72, ["agents-171 · out of memory", "4 agents → 0 finished", `stalled ${days(D.streaks["agents-171"].minutes)} straight`], { size: 26, anchor: "middle" });
+}
+
+// 8. What one more agent costs.
+legend("cost-legend", ["agents-171", "agents-173"]);
+{
+  const W = 1000, H = 340, L = 80, R = 210, T = 16, B = 46;
+  const g = canvas("cost", W, H, "Agents slice memory by working agents");
+  const x = (w) => L + ((w - 1) / 5) * (W - L - R), y = (gb) => T + (1 - gb / 10) * (H - T - B);
+  line(g, L, y(0), W - R, y(0), { width: 2 });
+  line(g, L, y(0), L, y(10), { width: 2 });
+  for (const v of [0, 4, 8]) say(g, L - 12, y(v) + 8, `${v} GB`, { size: 20, anchor: "end", fill: "var(--muted)" });
+  for (let w = 1; w <= 6; w++) say(g, x(w), H - 12, `${w}`, { size: 22, anchor: "middle", fill: "var(--muted)" });
+  say(g, W - R + 12, H - 12, "agents", { size: 20, fill: "var(--muted)" });
+  for (const m of ["agents-171", "agents-173"]) {
+    const rows = D.calibration[m];
+    poly(g, rows.map((r) => [x(r.working), y(r.sliceGb)]), { stroke: COLOR[m] });
+    for (const r of rows) {
+      ring(g, x(r.working), y(r.sliceGb), 6, 6, { stroke: COLOR[m], width: 2.4 });
+      tip(add(g, "circle", { cx: x(r.working), cy: y(r.sliceGb), r: 16, fill: "transparent" }), `${m}, ${r.working} working: ${r.sliceGb} GB (median over ${r.minutes} min)`);
+    }
+    line(g, L, y(D.sliceHighGb[m]), W - R, y(D.sliceHighGb[m]), { stroke: COLOR[m], width: 2, dash: "8 8", passes: 1 });
+    say(g, W - R + 12, y(D.sliceHighGb[m]) + 8, `${m} cap`, { size: 21 });
+  }
+  arrow(g, x(1) + 90, y(7.6), x(1.5), y(4.9), { width: 2 });
+  say(g, x(1) + 10, y(8), "about +1.75 GB per agent", { size: 24 });
+}
+
+// 9. How v2 picks.
+{
+  const g = canvas("how", 1000, 560, "How v2 chooses a machine");
+  box(g, 10, 20, 340, 110, { width: 2.6 });
+  lines(g, 180, 64, ["every machine", "(servers grouped by host)"], { size: 22, anchor: "middle" });
+  arrow(g, 354, 75, 382, 75);
+  box(g, 384, 10, 596, 200, { width: 2.6, fill: "var(--note)", gap: 16 });
+  say(g, 404, 50, "skip it if:", { size: 26 });
+  lines(g, 420, 90, ["stalled on memory (Linux PSI, macOS pressure)", "disk under 3 GB", "on battery · low power · overheating", "the owner set it to manual only"], { size: 22 });
+  arrow(g, 680, 214, 680, 262);
+  box(g, 200, 266, 780, 110, { width: 2.6 });
+  lines(g, 590, 306, ["room = (agents cap − max(used, working × 1.75 GB)) ÷ 1.75 GB", "…or free cores, whichever is smaller"], { size: 24, anchor: "middle" });
+  arrow(g, 590, 380, 590, 426);
+  box(g, 300, 430, 580, 70, { width: 3 });
+  say(g, 590, 475, "preference × room ÷ (1 + working)", { size: 28, anchor: "middle" });
+  say(g, 590, 540, "highest score gets the thread", { size: 24, anchor: "middle", fill: "var(--muted)" });
+  arrow(g, 196, 320, 120, 320, { dash: "8 8", width: 2 });
+  box(g, 10, 400, 260, 120, { width: 2, stroke: "var(--muted)" });
+  lines(g, 140, 440, ["agents see the same:", "t3_environment_read", "→ load"], { size: 22, anchor: "middle" });
+  line(g, 110, 324, 110, 396, { dash: "8 8", width: 2 });
+}
+
+// 10. Routes.
+bars("routes", D.routes.map((r) => ({ label: r.route.replace("LAN via SSH tunnel", "LAN, SSH tunnel"), value: r.ms, detail: `${r.route}: median ${r.ms} ms (range ${r.range} ms)` })), { label: "Request latency per connection route", unit: " ms" });
+
+// 11. What changed.
+{
+  const items = [
+    "one machine, one vote: a host ID shared by every server on it",
+    "skip machines stalled on memory, not just short of it",
+    "count capacity in agents, from T3's own agents cap",
+    "charge new agents 1.75 GB up front",
+    "skip disk under 3 GB, on battery, low power, overheating",
+    "each machine keeps its own Prefer / Normal / Less often / Manual only",
+    "agents get the same answer from t3_environment_read (+70 bytes)",
+  ];
+  const g = canvas("shipped", 1000, items.length * 62 + 10, "List of changes");
+  items.forEach((item, i) => {
+    const y = 10 + i * 62;
+    box(g, 10, y + 6, 34, 34, { width: 2.2 });
+    line(g, 16, y + 24, 26, y + 36, { width: 3, stroke: "var(--m3)" });
+    line(g, 26, y + 36, 46, y + 4, { width: 3, stroke: "var(--m3)" });
+    say(g, 66, y + 34, item, { size: 25 });
+  });
+}
+document.getElementById("numbers").innerHTML =
+  `<tr><th>Policy</th><th>Picks onto a stalled machine</th><th>Stalled within 10 min</th><th>No pick</th></tr>` +
+  Object.entries(D.summary).map(([name, s]) => `<tr><td>${policyName[name]}</td><td>${s.ontoStalledMachine} of ${s.decisions}</td><td>${s.stalledWithin10}</td><td>${s.refused}</td></tr>`).join("") +
+  `<tr><th>Burst of four</th><th>Past capacity</th><th>All on one machine</th><th>No machine had room</th></tr>` +
+  Object.entries(D.burst).map(([name, b]) => `<tr><td>${burstName[name]}</td><td>${b.overMeasuredCapacity} of ${b.placed}</td><td>${b.allOnOneMachine} of ${b.bursts}</td><td>${b.refused}</td></tr>`).join("") +
+  `<tr><th>Machine</th><th>Minutes stalled</th><th colspan="2">Longest stall</th></tr>` +
+  MACHINES.map((m) => `<tr><td>${m}</td><td>${D.stalledMinutes[m].stalled} of ${D.stalledMinutes[m].total}</td><td colspan="2">${D.streaks[m].minutes} min</td></tr>`).join("");
+document.getElementById("foot").textContent =
+  `Four T3 Code machines sampled every 10 s, ${D.window[0].slice(11, 16)}–${D.window[1].slice(11, 16)} UTC, ${D.window[0].slice(0, 10)}. Replays score each minute's real state; "capacity" is what each machine held before stalling (2 agents on the 7.9 GB VMs, 5 on agents-173). The Mac's CPU is approximated from its load average. Font: a subset of Virgil by Ellinor Rapp, renamed, under the SIL Open Font License 1.1.`;
+</script>
+</body>
+</html>
